@@ -92,6 +92,6 @@ module.exports = () => {
     },
     output: 'export',
     unoptimized: true,
-    basePath: 'tailwind-nextjs-starter-blog',
+    basePath: '/tailwind-nextjs-starter-blog',
   })
 }
