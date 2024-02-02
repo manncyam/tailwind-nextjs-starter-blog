@@ -91,6 +91,7 @@ module.exports = () => {
       return config
     },
     output: 'export',
-    unoptimized: true, 
+    unoptimized: true,
+    basePath: 'tailwind-nextjs-starter-blog',
   })
 }
