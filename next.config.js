@@ -4,6 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const isProd = process.env.NODE_ENV === 'production';
+
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -65,14 +67,6 @@ module.exports = () => {
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
-    images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'picsum.photos',
-        },
-      ],
-    },
     /*async headers() {
       return [
         {
@@ -92,13 +86,8 @@ module.exports = () => {
     },
     output: 'export',
     images: {
-      remotePatterns: [
-        {
-          hostname: 'picsum.photos',
-        },
-      ],
-      unoptimized: true,
+      unoptimized: isProd ? true : false,
     },
-    basePath: '/tailwind-nextjs-starter-blog',
+    basePath: isProd ? '/tailwind-nextjs-starter-blog' : '',
   })
 }
